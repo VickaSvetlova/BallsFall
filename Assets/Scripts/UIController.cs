@@ -8,11 +8,15 @@ namespace BallsFall
     {
         public event Action OnStartClick;
         public event Action OnResetClick;
+        public event Action OnPauseClick;
+        public event Action OnReplayClick;
+        public event Action OnPoceedClick;
         [SerializeField] private Slider hpBar;
         [SerializeField] private Text rewardLable;
         [SerializeField] private Text rewardHistoryLable;
         [SerializeField] private Animator failScreen;
         [SerializeField] private Animator winScreen;
+        [SerializeField] private Animator pauseScreen;
         [SerializeField] private GameObject speedUp;
         [SerializeField] private Text speedLabel;
 
@@ -53,6 +57,24 @@ namespace BallsFall
         {
             failScreen.SetBool("IsActive", state);
             OnResetClick?.Invoke();
+        }
+
+        public void PauseButton(bool state)
+        {
+            pauseScreen.SetBool("IsActive", state);
+            OnPauseClick?.Invoke();
+        }
+
+        public void ReplayButton()
+        {
+            pauseScreen.SetBool("IsActive", false);
+            OnReplayClick?.Invoke();
+        }
+
+        public void ProceedButton()
+        {
+            pauseScreen.SetBool("IsActive", false);
+            OnPoceedClick?.Invoke();
         }
 
         public void SpeedUp(float speed)
