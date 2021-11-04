@@ -7,7 +7,16 @@ namespace BallsFall
     public class ProgressTimer : MonoBehaviour
     {
         [SerializeField] private GameSetting _gameSetting;
-        public bool enable { set; get; }
+
+        public bool enable
+        {
+            set
+            {
+                Reset();
+            }
+            get { return enabled; }
+        }
+
         private Vector2 progressRange;
         private float _timer;
 
