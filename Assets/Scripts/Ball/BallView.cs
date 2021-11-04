@@ -12,7 +12,6 @@ namespace BallsFall.View
     public class BallView : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private GameObject fxPrefab;
-        [SerializeField] private GameObject scorePrefab;
         public event Action<StateDestroyebl> OnDestroy;
         private SpriteRenderer spriteRenderer;
         private Fall fall;
@@ -59,15 +58,9 @@ namespace BallsFall.View
         {
             OnDestroy?.Invoke(StateDestroyebl.reward);
             CreateFx();
-            CreateScoreFx(_ballModel.Reward);
             DestroyThis();
         }
 
-        private void CreateScoreFx(int ballModelReward)
-        {
-            var scoreFx = Instantiate(scorePrefab, transform.position, quaternion.identity);
-            scoreFx.GetComponent<UIScore>().score = ballModelReward.ToString();
-        }
 
         private void CreateFx()
         {
