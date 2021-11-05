@@ -34,5 +34,10 @@ namespace BallsFall
 
             OnChangeHealth?.Invoke((currentHealth, maxHealth));
         }
+
+        public void Reset()
+        {
+            SetHealth((maxHealth,maxHealth));
+        }
     }
 }

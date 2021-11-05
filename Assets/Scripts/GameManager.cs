@@ -81,8 +81,9 @@ namespace BallsFall
                     break;
                 case GameState.reset:
                     _repositoryAwards.ResetCurrentReward();
-                    _progressTimer.Reset();
                     Time.timeScale = 1;
+                    _health.Reset();
+                    _progressTimer.Reset();
                     SetState(GameState.game);
                     break;
                 case GameState.pause:
